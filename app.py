@@ -12,20 +12,18 @@ from sqlalchemy import create_engine
 from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 
-#################################################
-# Flask Setup
-#################################################
 app = Flask(__name__)
 
+
 #################################################
-# Database Connection Setup
+# Database Setup
 #################################################
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/bellybutton.sqlite"
 db = SQLAlchemy(app)
 
-# Reflect Existing Database Into a New Model
+# reflect an existing database into a new model
 Base = automap_base()
-# Reflect the Tables
+# reflect the tables
 Base.prepare(db.engine, reflect=True)
 
 # Save References to Each Table
